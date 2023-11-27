@@ -11,6 +11,11 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  font-family: "Inter";
+}
+
+*:not(.fa-solid):not(.fa):not(.e-icons) {
+    font-family: "Inter";
 }
 
 body {
@@ -23,7 +28,18 @@ body {
     font-size: x-large;
 }
 
-/*Grid*/
+/*Button*/
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+/*HyperLink*/
+.no-a-decoration, .no-a-decoration:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 /*Grid*/
 .e-grid {
     border: 0;
