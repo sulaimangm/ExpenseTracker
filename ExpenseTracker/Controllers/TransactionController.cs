@@ -30,7 +30,7 @@ namespace ExpenseTracker.Controllers
         {
             PopulateCategories();
             if (id == 0)
-                return View(new Category());
+                return View(new Transaction());
             else
                 return View(_context.Transactions.Find(id));
         }
