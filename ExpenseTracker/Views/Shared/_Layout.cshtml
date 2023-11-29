@@ -14,6 +14,8 @@
     <script src="https://cdn.syncfusion.com/ej2/23.2.4/dist/ej2.min.js"></script>
 </head>
 <body class="e-bigger">
+
+    <partial name="_SideBar" />
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -35,11 +37,14 @@
             </div>
         </nav>
     </header>
+    <div class="main-content">
     <div class="container mt-5">
         <div class="row justify-content-canter">
-            <div class="col-md-10">
+                <div class="@(ViewData["isDashboard"] == null ? "col-md-10" : "col-md-12")">
                 <main role="main" class="pb-3">
-                    <div class="row">
+                    @if (ViewData["isDashboard"] == null) 
+                    {
+                        <div class="row">
                         <div class="col-md-7">
                             <div class="d-flex flex-column mb-5">
                                 <div class="d-flex mb-1">
@@ -59,13 +64,14 @@
                             </div>
                         </div>
                     </div>
+                    }
                     @RenderBody()
                 </main>
             </div>
         </div>
         
     </div>
-
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
