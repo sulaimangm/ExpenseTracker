@@ -36,6 +36,15 @@ namespace ExpenseTracker.Controllers
             culture.NumberFormat.CurrencyNegativePattern = 1;
             ViewBag.balance = String.Format(culture, "{0:C0}", balance);
 
+            //Donut Chart - Expense by Category 
+            ViewBag.donutChartData = selectedTransactions.Where(i => i.Category.Type == "Expense").GroupBy(j => j.Category.CategoryId)
+                .Select(k => new
+                {
+                    categoryTitleWithIcon = k.First().Category.Icon + " " + k.First().Category.Title,
+                    amount = k.Sum(j => j.Amount), 
+                    formattedAmount = k.Sum(j => j.Amount).ToString("C0"),
+                });
+
             return View();
         }
     }
