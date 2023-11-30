@@ -53,7 +53,8 @@
             </div>
             <ejs-accumulationchart id="donutchart" enableSmartLabels background="#1a222b">
                 <e-accumulation-series-collection>
-                    <e-accumulation-series dataSource="ViewBag.donutChartData" xName="categoryTitleWithIcon" yName="amount" innerRadius="60%" legendShape="Circle">
+                    <e-accumulation-series dataSource="ViewBag.donutChartData" xName="categoryTitleWithIcon" yName="amount" innerRadius="60%" legendShape="Circle"
+                                           palettes=@(new string[]{"#0e8d76","#a4b219","#cb9b00","#8a442c","#0454b5","#7d0a0a","#822690","#4c2090","#313e93","#0096ac"})>
                         <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
@@ -77,6 +78,7 @@
                 <e-chart-primaryyaxis>
                     <e-majorgridlines width="1" color="#32414d" dashArray="3,5"></e-majorgridlines>
                     <e-majorticklines width="0"></e-majorticklines>
+                    <e-linestyle width="0"></e-linestyle>
                 </e-chart-primaryyaxis>
                 <e-chart-chartarea>
                     <e-chartarea-border width="0"></e-chartarea-border>
@@ -85,6 +87,10 @@
                     <e-series dataSource="@ViewBag.splineChartData" xName="day" yName="income" name="Income" width="3" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
                     <e-series dataSource="@ViewBag.splineChartData" xName="day" yName="expense" name="Expense" width="3" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
                 </e-series-collection>
+                <e-chart-legendsettings position="Top" alignment="Far" toggleVisibility="false">
+                    <e-legendsettings-textstyle color="#fff" size="1rem"></e-legendsettings-textstyle>
+                </e-chart-legendsettings>
+                <e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
             </ejs-chart>
         </div>
     </div>
