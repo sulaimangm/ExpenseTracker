@@ -70,6 +70,23 @@ namespace ExpenseTracker.Controllers
                 })
                 .ToList();
 
+            //Combining Income and Expense
+            string[] last7Days = Enumerable.Range(0, 7)
+                .Select(i => startDate.AddDays(i).ToString("dd-MMM"))
+                .ToArray();
+
+            ViewBag.splineChartData = from day in last7Days
+                                      join income in incomeSummary on day equals income.day into dayIncomeJoined
+                                      from income in dayIncomeJoined.DefaultIfEmpty()
+                                      join expense in expenseSummary on day equals expense.day into expenseJoined
+                                      from expense in expenseJoined.DefaultIfEmpty()
+                                      select new
+                                      {
+                                          day = day,
+                                          income = income == null ? 0 : income.income,
+                                          expense = expense == null ? 0 : expense.expense,
+                                      };
+
             return View();
         }
     }
